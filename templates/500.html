@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Тимчасова помилка сервера — SmileDent{% endblock %}
+{% block meta_description %}Виникла тимчасова технічна помилка. Спробуйте оновити сторінку.{% endblock %}
+{% block content %}
+<section class="error-page">
+  <div>
+    <p class="error-page__code">500</p>
+    <h1>Щось пішло не так</h1>
+    <p style="max-width:440px;margin:16px auto 28px;">На сервері сталася тимчасова помилка. Спробуйте оновити сторінку через кілька хвилин або зв'яжіться з нами напряму.</p>
+    <a href="{% url 'core:home' %}" class="btn btn--primary">На головну сторінку</a>
+  </div>
+</section>
+{% endblock %}

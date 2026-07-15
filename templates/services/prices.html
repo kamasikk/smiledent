@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span><span class="current">Ціни</span>
+    </nav>
+    <p class="eyebrow">Прозорий прайс</p>
+    <h1 class="page-header__title">Ціни на послуги</h1>
+    <p class="page-header__lead">Остаточна вартість лікування визначається лікарем після діагностики та завжди узгоджується з вами заздалегідь.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    {% for category in categories %}
+      {% if category.services.all %}
+      <div class="price-category" data-reveal>
+        <div class="price-category__title"><h2 style="font-size:1.5rem;">{{ category.name }}</h2></div>
+        <table class="price-table">
+          <thead>
+            <tr><th>Послуга</th><th>Тривалість</th><th>Вартість</th></tr>
+          </thead>
+          <tbody>
+            {% for service in category.services.all %}
+            {% if service.is_active %}
+            <tr>
+              <td data-label="Послуга"><a href="{{ service.get_absolute_url }}">{{ service.name }}</a></td>
+              <td data-label="Тривалість">{{ service.duration_minutes }} хв</td>
+              <td data-label="Вартість" class="price-table__price">від {{ service.price_from|floatformat:0 }} грн</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div class="cta-banner__text">
+        <h2>Отримайте точний розрахунок</h2>
+        <p>Запишіться на безкоштовну консультацію, і лікар складе для вас індивідуальний план лікування з фіксованою вартістю.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="{% url 'appointments:booking' %}" class="btn btn--gold">Записатися на консультацію</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

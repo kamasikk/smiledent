@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span><span class="current">Відгуки</span>
+    </nav>
+    <p class="eyebrow">Голос наших пацієнтів</p>
+    <h1 class="page-header__title">Відгуки пацієнтів SmileDent</h1>
+    {% if reviews_count %}
+    <div class="review-summary">
+      <span class="review-summary__score">{{ avg_rating }}</span>
+      <div>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p>на основі {{ reviews_count }} відгуків</p>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="reviews-grid">
+      {% for review in reviews %}
+      <article class="review-card" data-reveal>
+        <div class="review-card__head">
+          <img src="{{ review.photo_url }}" alt="Фото пацієнта {{ review.author_name }}" class="review-card__avatar" loading="lazy" width="52" height="52">
+          <div>
+            <p class="review-card__name">{{ review.author_name }}</p>
+            <span class="stars" aria-label="Оцінка {{ review.rating }} з 5">
+              {% for s in review.stars_range %}★{% endfor %}{% for s in review.empty_stars_range %}☆{% endfor %}
+            </span>
+          </div>
+        </div>
+        <p class="review-card__text">{{ review.text }}</p>
+      </article>
+      {% empty %}
+      <p class="empty-state">Ще немає опублікованих відгуків. Будьте першим!</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="form-card" style="max-width:720px;margin-inline:auto;" data-reveal>
+      <h2>Залишити відгук</h2>
+      <p style="margin-bottom:24px;">Ваш відгук допоможе іншим пацієнтам обрати клініку. Він з'явиться на сайті після короткої модерації.</p>
+      <form method="post" novalidate data-validate>
+        {% csrf_token %}
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="{{ form.author_name.id_for_label }}">Ваше ім'я <span class="req">*</span></label>
+            {{ form.author_name }}
+            {% if form.author_name.errors %}<ul class="form-errors">{% for e in form.author_name.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.rating.id_for_label }}">Оцінка <span class="req">*</span></label>
+            {{ form.rating }}
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="{{ form.text.id_for_label }}">Ваш відгук <span class="req">*</span></label>
+            {{ form.text }}
+            {% if form.text.errors %}<ul class="form-errors">{% for e in form.text.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--block">Надіслати відгук</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span><span class="current">Онлайн-запис</span>
+    </nav>
+    <p class="eyebrow">Запис на прийом</p>
+    <h1 class="page-header__title">Запишіться до лікаря за дві хвилини</h1>
+    <p class="page-header__lead">Заповніть форму нижче — наш адміністратор зателефонує вам, щоб підтвердити зручний час.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="booking-steps">
+      <div class="booking-step" data-reveal>
+        <div class="booking-step__num">1</div>
+        <h4>Оберіть послугу</h4>
+        <p>Вкажіть, що саме вас турбує, або залиште поле порожнім</p>
+      </div>
+      <div class="booking-step" data-reveal data-reveal-delay="1">
+        <div class="booking-step__num">2</div>
+        <h4>Оберіть лікаря</h4>
+        <p>Або довірте вибір нашому адміністратору</p>
+      </div>
+      <div class="booking-step" data-reveal data-reveal-delay="2">
+        <div class="booking-step__num">3</div>
+        <h4>Вкажіть час</h4>
+        <p>Оберіть зручну дату й час візиту</p>
+      </div>
+      <div class="booking-step" data-reveal data-reveal-delay="3">
+        <div class="booking-step__num">4</div>
+        <h4>Підтвердження</h4>
+        <p>Ми зателефонуємо і підтвердимо запис</p>
+      </div>
+    </div>
+
+    <div class="form-card" style="max-width:820px;margin-inline:auto;" data-reveal>
+      <form method="post" novalidate data-validate>
+        {% csrf_token %}
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label" for="{{ form.full_name.id_for_label }}">Повне ім'я <span class="req">*</span></label>
+            {{ form.full_name }}
+            {% if form.full_name.errors %}<ul class="form-errors">{% for e in form.full_name.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.phone.id_for_label }}">Телефон <span class="req">*</span></label>
+            {{ form.phone }}
+            {% if form.phone.errors %}<ul class="form-errors">{% for e in form.phone.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.doctor.id_for_label }}">Бажаний лікар</label>
+            {{ form.doctor }}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.service.id_for_label }}">Послуга</label>
+            {{ form.service }}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.preferred_date.id_for_label }}">Бажана дата <span class="req">*</span></label>
+            {{ form.preferred_date }}
+            {% if form.preferred_date.errors %}<ul class="form-errors">{% for e in form.preferred_date.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="{{ form.preferred_time.id_for_label }}">Бажаний час <span class="req">*</span></label>
+            {{ form.preferred_time }}
+            {% if form.preferred_time.errors %}<ul class="form-errors">{% for e in form.preferred_time.errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+            <span class="form-help">Клініка працює з 09:00 до 19:00</span>
+          </div>
+          <div class="form-group form-group--full">
+            <label class="form-label" for="{{ form.message.id_for_label }}">Коментар</label>
+            {{ form.message }}
+          </div>
+        </div>
+        {% if form.non_field_errors %}<ul class="form-errors">{% for e in form.non_field_errors %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--block">Надіслати заявку на запис</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}

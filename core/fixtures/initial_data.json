@@ -1,0 +1,403 @@
+[
+  {
+    "model": "core.advantage",
+    "pk": 1,
+    "fields": {
+      "title": "Безболісне лікування",
+      "description": "Сучасна анестезія та дбайливий підхід до кожного пацієнта",
+      "icon": "heart",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.advantage",
+    "pk": 2,
+    "fields": {
+      "title": "Досвідчені лікарі",
+      "description": "Стоматологи з міжнародними сертифікатами та стажем від 8 років",
+      "icon": "award",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.advantage",
+    "pk": 3,
+    "fields": {
+      "title": "Сучасне обладнання",
+      "description": "Цифрова діагностика, 3D-томографія та стерильні кабінети",
+      "icon": "shield",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.advantage",
+    "pk": 4,
+    "fields": {
+      "title": "Гарантія якості",
+      "description": "Офіційна гарантія на всі види лікування та протезування",
+      "icon": "star",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.advantage",
+    "pk": 5,
+    "fields": {
+      "title": "Зручний графік",
+      "description": "Працюємо щодня з 9:00 до 19:00, без обідньої перерви",
+      "icon": "clock",
+      "order": 5
+    }
+  },
+  {
+    "model": "core.advantage",
+    "pk": 6,
+    "fields": {
+      "title": "Індивідуальний план",
+      "description": "Складаємо персональний план лікування для кожного пацієнта",
+      "icon": "tooth",
+      "order": 6
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 1,
+    "fields": {
+      "question": "Чи боляче лікувати зуби у вашій клініці?",
+      "answer": "Ні. Ми використовуємо сучасні анестетики та щадні методики, тому лікування проходить максимально комфортно навіть для пацієнтів з підвищеною чутливістю.",
+      "order": 1,
+      "is_published": true
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 2,
+    "fields": {
+      "question": "Скільки коштує первинна консультація?",
+      "answer": "Первинна консультація та огляд коштують від 300 грн. Точну вартість лікування лікар озвучить після діагностики.",
+      "order": 2,
+      "is_published": true
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 3,
+    "fields": {
+      "question": "Чи надаєте ви гарантію на лікування?",
+      "answer": "Так, на всі види лікування та протезування ми надаємо офіційну гарантію від 1 до 5 років залежно від виду послуги.",
+      "order": 3,
+      "is_published": true
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 4,
+    "fields": {
+      "question": "Чи можна записатися на той самий день?",
+      "answer": "Так, за наявності вільних місць ми приймаємо пацієнтів день у день. Рекомендуємо зателефонувати заздалегідь для підтвердження.",
+      "order": 4,
+      "is_published": true
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 5,
+    "fields": {
+      "question": "Чи працюєте ви з дітьми?",
+      "answer": "Так, у нас є дитячі стоматологи, які знають, як знайти підхід до маленьких пацієнтів і зробити візит приємним.",
+      "order": 5,
+      "is_published": true
+    }
+  },
+  {
+    "model": "core.faq",
+    "pk": 6,
+    "fields": {
+      "question": "Які способи оплати ви приймаєте?",
+      "answer": "Приймаємо готівку, банківські картки та надаємо можливість розстрочки на дороге лікування.",
+      "order": 6,
+      "is_published": true
+    }
+  },
+  {
+    "model": "doctors.doctor",
+    "pk": 1,
+    "fields": {
+      "full_name": "Олена Ковальчук",
+      "slug": "olena-kovalchuk",
+      "specialty": "Лікар-терапевт, ендодонтист",
+      "experience_years": 12,
+      "education": "Національний медичний університет ім. О.О. Богомольця, сертифікат Європейської асоціації ендодонтистів",
+      "bio": "Спеціалізується на лікуванні кореневих каналів та естетичній реставрації зубів. Постійно підвищує кваліфікацію на міжнародних конференціях.",
+      "order": 1,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "doctors.doctor",
+    "pk": 2,
+    "fields": {
+      "full_name": "Андрій Петренко",
+      "slug": "andriy-petrenko",
+      "specialty": "Хірург-імплантолог",
+      "experience_years": 15,
+      "education": "Львівський національний медичний університет, сертифікація Straumann Implant System",
+      "bio": "Провів понад 3000 успішних імплантацій. Впроваджує протоколи безболісної хірургії та швидкого відновлення.",
+      "order": 2,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "doctors.doctor",
+    "pk": 3,
+    "fields": {
+      "full_name": "Марія Гнатюк",
+      "slug": "mariya-gnatiuk",
+      "specialty": "Лікар-ортодонт",
+      "experience_years": 9,
+      "education": "Харківський національний медичний університет, сертифікований спеціаліст Invisalign",
+      "bio": "Допомагає дорослим і дітям отримати ідеальну усмішку за допомогою брекет-систем та елайнерів.",
+      "order": 3,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "doctors.doctor",
+    "pk": 4,
+    "fields": {
+      "full_name": "Ігор Сидоренко",
+      "slug": "ihor-sydorenko",
+      "specialty": "Дитячий стоматолог",
+      "experience_years": 10,
+      "education": "Національний медичний університет ім. О.О. Богомольця, спеціалізація дитяча стоматологія",
+      "bio": "Створює для маленьких пацієнтів атмосферу довіри та спокою, перетворюючи відвідування стоматолога на приємний досвід.",
+      "order": 4,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 1,
+    "fields": {
+      "name": "Терапія",
+      "slug": "therapy",
+      "order": 1
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 2,
+    "fields": {
+      "name": "Хірургія та імплантація",
+      "slug": "surgery",
+      "order": 2
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 3,
+    "fields": {
+      "name": "Ортодонтія",
+      "slug": "orthodontics",
+      "order": 3
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 4,
+    "fields": {
+      "name": "Естетична стоматологія",
+      "slug": "esthetics",
+      "order": 4
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 5,
+    "fields": {
+      "name": "Дитяча стоматологія",
+      "slug": "kids",
+      "order": 5
+    }
+  },
+  {
+    "model": "services.servicecategory",
+    "pk": 6,
+    "fields": {
+      "name": "Профілактика",
+      "slug": "prevention",
+      "order": 6
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Лікування карієсу",
+      "slug": "caries-treatment",
+      "short_description": "Сучасне лікування карієсу без болю з використанням композитних матеріалів.",
+      "description": "Ми діагностуємо карієс на ранніх стадіях та проводимо лікування із застосуванням анестезії й високоякісних пломбувальних матеріалів, що забезпечують природний вигляд зуба.",
+      "icon": "tooth",
+      "price_from": "800.00",
+      "duration_minutes": 45,
+      "order": 1,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "name": "Імплантація зубів",
+      "slug": "dental-implants",
+      "short_description": "Встановлення сучасних імплантів з довічною гарантією виробника.",
+      "description": "Використовуємо імпланти провідних світових виробників. Комп'ютерне 3D-планування дозволяє провести операцію максимально точно та з мінімальним відновним періодом.",
+      "icon": "implant",
+      "price_from": "15000.00",
+      "duration_minutes": 90,
+      "order": 2,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 3,
+    "fields": {
+      "category": 3,
+      "name": "Брекет-системи",
+      "slug": "braces",
+      "short_description": "Виправлення прикусу металевими, керамічними та сапфіровими брекетами.",
+      "description": "Наші ортодонти підберуть оптимальну систему брекетів відповідно до ваших потреб і бюджету, а також складуть детальний план лікування.",
+      "icon": "braces",
+      "price_from": "25000.00",
+      "duration_minutes": 60,
+      "order": 3,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 4,
+    "fields": {
+      "category": 4,
+      "name": "Професійне відбілювання",
+      "slug": "teeth-whitening",
+      "short_description": "Безпечне відбілювання зубів до 8 тонів за одну процедуру.",
+      "description": "Використовуємо систему Zoom 4, яка дозволяє досягти помітного результату без пошкодження емалі та підвищення чутливості зубів.",
+      "icon": "whitening",
+      "price_from": "3500.00",
+      "duration_minutes": 60,
+      "order": 4,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 5,
+    "fields": {
+      "category": 5,
+      "name": "Дитяча профілактика",
+      "slug": "kids-prevention",
+      "short_description": "Герметизація фісур та фторування для захисту дитячих зубів.",
+      "description": "Профілактичні процедури, що знижують ризик розвитку карієсу у дітей на 80%. Проводяться в ігровій та комфортній атмосфері.",
+      "icon": "kids",
+      "price_from": "600.00",
+      "duration_minutes": 30,
+      "order": 5,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "services.service",
+    "pk": 6,
+    "fields": {
+      "category": 6,
+      "name": "Професійна гігієна порожнини рота",
+      "slug": "professional-hygiene",
+      "short_description": "Ультразвукове чищення зубного каменю та полірування Air Flow.",
+      "description": "Комплексна процедура, що включає видалення зубного нальоту й каменю, полірування Air Flow та фторування для зміцнення емалі.",
+      "icon": "cleaning",
+      "price_from": "1200.00",
+      "duration_minutes": 40,
+      "order": 6,
+      "is_active": true,
+      "created_at": "2026-01-01T10:00:00Z",
+      "updated_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 1,
+    "fields": {
+      "author_name": "Наталія Іваненко",
+      "rating": 5,
+      "text": "Дуже задоволена результатом лікування! Лікар уважно поставилась до моєї проблеми, все пояснила і зробила абсолютно безболісно. Рекомендую!",
+      "is_approved": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 2,
+    "fields": {
+      "author_name": "Дмитро Коваль",
+      "rating": 5,
+      "text": "Встановлював імплант — все пройшло швидко і без ускладнень. Клініка сучасна, персонал ввічливий. Дуже дякую команді SmileDent.",
+      "is_approved": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 3,
+    "fields": {
+      "author_name": "Софія Мельник",
+      "rating": 4,
+      "text": "Гарна клініка, приємна атмосфера. Довелося трохи почекати на прийом, але якість лікування компенсувала це з лишком.",
+      "is_approved": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 4,
+    "fields": {
+      "author_name": "Олександр Бондаренко",
+      "rating": 5,
+      "text": "Водив сина на лікування — лікар знайшов чудовий підхід до дитини, все пройшло без сліз і страху. Дуже дякуємо!",
+      "is_approved": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "reviews.review",
+    "pk": 5,
+    "fields": {
+      "author_name": "Тетяна Захарчук",
+      "rating": 5,
+      "text": "Ставила брекети саме тут. Ортодонт детально розповіла про всі етапи лікування, результатом дуже задоволена.",
+      "is_approved": true,
+      "created_at": "2026-01-01T10:00:00Z"
+    }
+  }
+]

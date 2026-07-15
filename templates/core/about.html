@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span><span class="current">Про клініку</span>
+    </nav>
+    <p class="eyebrow">Про SmileDent</p>
+    <h1 class="page-header__title">Клініка, де медицина зустрічається з турботою</h1>
+    <p class="page-header__lead">Ми створили SmileDent, щоб змінити ставлення людей до стоматології: без страху, без черг, без компромісів у якості.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="doctor-detail">
+      <div class="doctor-detail__img">
+        <img src="https://picsum.photos/seed/smiledent-clinic/700/900" alt="Інтер'єр стоматологічної клініки SmileDent" loading="lazy" width="700" height="900">
+      </div>
+      <div>
+        <h2>Наша місія</h2>
+        <p>Ми віримо, що здорова усмішка — це основа впевненості людини. Тому кожен кабінет SmileDent оснащений цифровим рентген-обладнанням, а кожен лікар щороку підвищує кваліфікацію на міжнародних курсах.</p>
+        <div class="doctor-detail__facts">
+          <div class="doctor-detail__fact"><strong>12+</strong><span>років досвіду</span></div>
+          <div class="doctor-detail__fact"><strong>{{ doctors_count }}</strong><span>лікарів у команді</span></div>
+          <div class="doctor-detail__fact"><strong>8 000+</strong><span>пацієнтів</span></div>
+        </div>
+        <div class="doctor-detail__section">
+          <h3>Наш підхід</h3>
+          <p>Перед початком лікування ми завжди проводимо повну діагностику та складаємо прозорий план з фіксованою вартістю — без прихованих платежів і несподіванок.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="values-heading">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" style="justify-content:center">Наші цінності</p>
+      <h2 id="values-heading">Що робить нас іншими</h2>
+    </div>
+    <div class="advantages-grid">
+      {% for advantage in advantages %}
+      <div class="advantage-card" data-reveal>
+        <span class="advantage-card__icon" aria-hidden="true">{% include 'includes/icon.html' with icon=advantage.icon %}</span>
+        <h3>{{ advantage.title }}</h3>
+        <p>{{ advantage.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div class="cta-banner__text">
+        <h2>Познайомтесь із нашою командою</h2>
+        <p>Кожен лікар SmileDent — це не лише диплом, а роки практики та щира любов до своєї справи.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="{% url 'doctors:list' %}" class="btn btn--gold">Наші лікарі</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

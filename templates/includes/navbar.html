@@ -1,0 +1,51 @@
+{% load static %}
+<header class="site-header" data-site-header>
+  <div class="container site-header__inner">
+    <a href="{% url 'core:home' %}" class="brand" aria-label="{{ SITE_NAME }} — на головну">
+      <svg class="brand__mark" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M17 4c-4.5 0-7.5 2.6-8.4 5.9-.7 2.5-.2 4.8.5 7.3.6 2.3 1.3 5 1.3 8.4 0 1.7 1 3 2.4 3 1.6 0 2.1-1.4 2.6-3.6.5-2.2.9-5 1.6-5 .7 0 1.1 2.8 1.6 5 .5 2.2 1 3.6 2.6 3.6 1.4 0 2.4-1.3 2.4-3 0-3.4.7-6.1 1.3-8.4.7-2.5 1.2-4.8.5-7.3C24.5 6.6 21.5 4 17 4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand__text">Smile<em>Dent</em></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Основна навігація">
+      <ul class="main-nav__list">
+        <li><a href="{% url 'core:home' %}" class="main-nav__link {% if request.resolver_match.url_name == 'home' %}is-active{% endif %}">Головна</a></li>
+        <li><a href="{% url 'core:about' %}" class="main-nav__link {% if request.resolver_match.url_name == 'about' %}is-active{% endif %}">Про клініку</a></li>
+        <li><a href="{% url 'services:list' %}" class="main-nav__link {% if request.resolver_match.url_name == 'list' and request.resolver_match.app_name == 'services' %}is-active{% endif %}">Послуги</a></li>
+        <li><a href="{% url 'doctors:list' %}" class="main-nav__link {% if request.resolver_match.app_name == 'doctors' %}is-active{% endif %}">Лікарі</a></li>
+        <li><a href="{% url 'services:prices' %}" class="main-nav__link {% if request.resolver_match.url_name == 'prices' %}is-active{% endif %}">Ціни</a></li>
+        <li><a href="{% url 'reviews:list' %}" class="main-nav__link {% if request.resolver_match.app_name == 'reviews' %}is-active{% endif %}">Відгуки</a></li>
+        <li><a href="{% url 'core:faq' %}" class="main-nav__link {% if request.resolver_match.url_name == 'faq' %}is-active{% endif %}">FAQ</a></li>
+        <li><a href="{% url 'core:contact' %}" class="main-nav__link {% if request.resolver_match.url_name == 'contact' %}is-active{% endif %}">Контакти</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="tel:{{ CLINIC_PHONE }}" class="header-phone">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>{{ CLINIC_PHONE }}</span>
+      </a>
+      <a href="{% url 'appointments:booking' %}" class="btn btn--primary btn--sm">Записатися</a>
+    </div>
+
+    <button type="button" class="burger" data-burger aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobile-nav" data-mobile-nav>
+    <ul>
+      <li><a href="{% url 'core:home' %}">Головна</a></li>
+      <li><a href="{% url 'core:about' %}">Про клініку</a></li>
+      <li><a href="{% url 'services:list' %}">Послуги</a></li>
+      <li><a href="{% url 'doctors:list' %}">Лікарі</a></li>
+      <li><a href="{% url 'services:prices' %}">Ціни</a></li>
+      <li><a href="{% url 'reviews:list' %}">Відгуки</a></li>
+      <li><a href="{% url 'core:faq' %}">FAQ</a></li>
+      <li><a href="{% url 'core:contact' %}">Контакти</a></li>
+    </ul>
+    <a href="{% url 'appointments:booking' %}" class="btn btn--primary btn--block">Записатися онлайн</a>
+    <a href="tel:{{ CLINIC_PHONE }}" class="btn btn--outline btn--block">Зателефонувати: {{ CLINIC_PHONE }}</a>
+  </div>
+</header>

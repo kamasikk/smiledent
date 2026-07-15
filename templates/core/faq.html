@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span><span class="current">FAQ</span>
+    </nav>
+    <p class="eyebrow">Питання та відповіді</p>
+    <h1 class="page-header__title">Часті запитання пацієнтів</h1>
+    <p class="page-header__lead">Не знайшли відповідь на своє запитання? Напишіть нам через форму контактів — ми відповімо протягом дня.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="faq-list">
+      {% for faq in faqs %}
+      <div class="faq-item">
+        <button type="button" class="faq-item__q" aria-expanded="false">
+          <span>{{ faq.question }}</span>
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a"><div class="faq-item__a-inner">{{ faq.answer }}</div></div>
+      </div>
+      {% empty %}
+      <p class="empty-state">Наразі питання не додані.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div class="cta-banner__text">
+        <h2>Маєте інше запитання?</h2>
+        <p>Зв'яжіться з нами будь-яким зручним способом — ми завжди на зв'язку.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="{% url 'core:contact' %}" class="btn btn--gold">Написати нам</a>
+        <a href="tel:{{ CLINIC_PHONE }}" class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,0.3)">{{ CLINIC_PHONE }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

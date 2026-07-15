@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="container hero__inner">
+    <div>
+      <p class="eyebrow">Стоматологія преміум-класу в Києві</p>
+      <h1 class="hero__title">Усмішка, якою <span class="accent">пишаються</span> роками</h1>
+      <p class="hero__lead">SmileDent поєднує європейські стандарти лікування, сучасне обладнання та дбайливе ставлення до кожного пацієнта — від першого огляду до фінального результату.</p>
+      <div class="cta-buttons">
+        <a href="{% url 'appointments:booking' %}" class="btn btn--primary">Записатися онлайн</a>
+        <a href="{% url 'services:list' %}" class="btn btn--outline">Переглянути послуги</a>
+      </div>
+      <div class="hero__stats">
+        <div><span class="hero__stat-num">12+</span><span class="hero__stat-label">років на ринку</span></div>
+        <div><span class="hero__stat-num">8 000+</span><span class="hero__stat-label">задоволених пацієнтів</span></div>
+        <div><span class="hero__stat-num">4.9/5</span><span class="hero__stat-label">середня оцінка</span></div>
+      </div>
+    </div>
+    <div class="hero__visual">
+      <div class="hero__ring" aria-hidden="true"></div>
+      <div class="hero__frame">
+        <img src="https://picsum.photos/seed/smiledent-hero/800/1000" alt="Лікар-стоматолог SmileDent консультує пацієнтку в сучасному кабінеті клініки" loading="eager" width="800" height="1000">
+      </div>
+      <div class="hero__badge">
+        <span class="hero__badge-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div><strong>Без болю та стресу</strong><span>Сучасна анестезія у кожній процедурі</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="advantages-heading">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" style="justify-content:center">Чому обирають нас</p>
+      <h2 id="advantages-heading">Турбота, що відчувається в деталях</h2>
+    </div>
+    <div class="advantages-grid">
+      {% for advantage in advantages %}
+      <div class="advantage-card" data-reveal data-reveal-delay="{{ forloop.counter0|divisibleby:3|yesno:'0,1' }}">
+        <span class="advantage-card__icon" aria-hidden="true">
+          {% include 'includes/icon.html' with icon=advantage.icon %}
+        </span>
+        <h3>{{ advantage.title }}</h3>
+        <p>{{ advantage.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Наші послуги</p>
+      <h2 id="services-heading">Повний спектр стоматологічної допомоги</h2>
+    </div>
+    <div class="services-grid">
+      {% for service in services %}
+      <article class="service-card" data-reveal>
+        <div class="service-card__img">
+          <img src="{{ service.image_url }}" alt="{{ service.name }} у клініці SmileDent" loading="lazy" width="400" height="300">
+        </div>
+        <div class="service-card__body">
+          <div class="service-card__meta"><span>від {{ service.price_from|floatformat:0 }} грн</span><span>{{ service.duration_minutes }} хв</span></div>
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.short_description }}</p>
+          <a href="{{ service.get_absolute_url }}" class="service-card__link">Детальніше <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="section__foot">
+      <a href="{% url 'services:list' %}" class="btn btn--outline">Усі послуги</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="doctors-heading">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" style="justify-content:center">Наша команда</p>
+      <h2 id="doctors-heading">Лікарі, яким довіряють</h2>
+    </div>
+    <div class="doctors-grid">
+      {% for doctor in doctors %}
+      <article class="doctor-card" data-reveal>
+        <div class="doctor-card__img">
+          <img src="{{ doctor.photo_url }}" alt="Лікар {{ doctor.full_name }}, {{ doctor.specialty }}" loading="lazy" width="300" height="400">
+        </div>
+        <div class="doctor-card__body">
+          <h3 class="doctor-card__name">{{ doctor.full_name }}</h3>
+          <p class="doctor-card__specialty">{{ doctor.specialty }}</p>
+          <p class="doctor-card__exp">Стаж — {{ doctor.experience_years }} років</p>
+          <a href="{{ doctor.get_absolute_url }}" class="doctor-card__link">Профіль лікаря <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="section__foot">
+      <a href="{% url 'doctors:list' %}" class="btn btn--outline">Уся команда лікарів</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Відгуки пацієнтів</p>
+      <h2 id="reviews-heading">Що кажуть про нас пацієнти</h2>
+    </div>
+    <div class="reviews-grid">
+      {% for review in reviews %}
+      <article class="review-card" data-reveal>
+        <div class="review-card__head">
+          <img src="{{ review.photo_url }}" alt="Фото пацієнта {{ review.author_name }}" class="review-card__avatar" loading="lazy" width="52" height="52">
+          <div>
+            <p class="review-card__name">{{ review.author_name }}</p>
+            <span class="stars" aria-label="Оцінка {{ review.rating }} з 5">
+              {% for s in review.stars_range %}★{% endfor %}{% for s in review.empty_stars_range %}☆{% endfor %}
+            </span>
+          </div>
+        </div>
+        <p class="review-card__text">{{ review.text }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="section__foot">
+      <a href="{% url 'reviews:list' %}" class="btn btn--outline">Усі відгуки</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section__head section__head--center">
+      <p class="eyebrow" style="justify-content:center">Питання та відповіді</p>
+      <h2 id="faq-heading">Часті запитання</h2>
+    </div>
+    <div class="faq-list">
+      {% for faq in faqs %}
+      <div class="faq-item">
+        <button type="button" class="faq-item__q" aria-expanded="false">
+          <span>{{ faq.question }}</span>
+          <span class="faq-item__icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-item__a"><div class="faq-item__a-inner">{{ faq.answer }}</div></div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="section__foot">
+      <a href="{% url 'core:faq' %}" class="btn btn--outline">Усі питання</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-banner" data-reveal>
+      <div class="cta-banner__text">
+        <h2>Готові до здорової усмішки?</h2>
+        <p>Запишіться на безкоштовну консультацію вже сьогодні — наш адміністратор підбере зручний час протягом дня.</p>
+      </div>
+      <div class="cta-banner__actions">
+        <a href="{% url 'appointments:booking' %}" class="btn btn--gold">Записатися онлайн</a>
+        <a href="tel:{{ CLINIC_PHONE }}" class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,0.3)">Зателефонувати</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

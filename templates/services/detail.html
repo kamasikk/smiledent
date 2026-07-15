@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}{{ meta_title }}{% endblock %}
+{% block meta_description %}{{ meta_description }}{% endblock %}
+
+{% block content %}
+<section class="page-header" style="padding-bottom:0;">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Хлібні крихти">
+      <a href="{% url 'core:home' %}">Головна</a><span aria-hidden="true">/</span>
+      <a href="{% url 'services:list' %}">Послуги</a><span aria-hidden="true">/</span>
+      <span class="current">{{ service.name }}</span>
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="doctor-detail">
+      <div class="doctor-detail__img" style="aspect-ratio:4/3;">
+        <img src="{{ service.image_url }}" alt="{{ service.name }} у клініці SmileDent" loading="eager" width="700" height="525">
+      </div>
+      <div>
+        {% if service.category %}<p class="doctor-detail__specialty">{{ service.category.name }}</p>{% endif %}
+        <h1>{{ service.name }}</h1>
+        <p>{{ service.description }}</p>
+
+        <div class="doctor-detail__facts">
+          <div class="doctor-detail__fact"><strong>{{ service.price_from|floatformat:0 }} грн</strong><span>вартість від</span></div>
+          <div class="doctor-detail__fact"><strong>{{ service.duration_minutes }} хв</strong><span>тривалість</span></div>
+        </div>
+
+        <div class="cta-buttons mt-lg">
+          <a href="{% url 'appointments:booking' %}?service={{ service.slug }}" class="btn btn--primary">Записатися на цю послугу</a>
+          <a href="{% url 'services:prices' %}" class="btn btn--outline">Переглянути прайс-лист</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if related_services %}
+<section class="section section--alt" aria-labelledby="related-heading">
+  <div class="container">
+    <div class="section__head">
+      <p class="eyebrow">Схожі послуги</p>
+      <h2 id="related-heading">Вам також може підійти</h2>
+    </div>
+    <div class="services-grid">
+      {% for related in related_services %}
+      <article class="service-card" data-reveal>
+        <div class="service-card__img"><img src="{{ related.image_url }}" alt="{{ related.name }}" loading="lazy" width="400" height="300"></div>
+        <div class="service-card__body">
+          <div class="service-card__meta"><span>від {{ related.price_from|floatformat:0 }} грн</span><span>{{ related.duration_minutes }} хв</span></div>
+          <h3>{{ related.name }}</h3>
+          <p>{{ related.short_description }}</p>
+          <a href="{{ related.get_absolute_url }}" class="service-card__link">Детальніше <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
